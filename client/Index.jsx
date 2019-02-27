@@ -10,4 +10,4 @@ const PriceChart = (
   </Router>
 )
 
-window.PriceChart = PriceChart;
+window.PriceChart2 = PriceChart;
