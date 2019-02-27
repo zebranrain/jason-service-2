@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+$open-sans: 'Open Sans', sans-serif;
+
+.timeframes {
+  padding: 5px 5px 5px 0px;
+  font-family: $open-sans;
+  border-bottom-width:1px;
+  border-bottom-color:#f4f4f5;
+  border-bottom-style: solid;
+  width: 1000px;
+  font-size: 13px;
+}
+
+.timeframe {
+  padding: 5px 5px 5px 0px;
+  margin: 10px 10px 10px 0px;
+}
+
+.timeframe:hover {
+  color: #21ce99;
+  cursor: pointer;
+}
+
+.selected-timeframe {
+  padding: 5px 5px 5px 0px;
+  margin: 10px 10px 10px 0px;
+  color: #21ce99;
+  border-bottom-width:2px;
+  border-bottom-color:#21ce99;
+  border-bottom-style: solid
+}
+
+// change line color
+// change font color
+// change hover color
+// change border color
+// on mouseleave, set state to most recent price
+// on mouseleave, remove crosshair
+// animate price
+// add price change info ($ and % change since beginning of period)
+// format dates
+
+
+
