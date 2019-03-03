@@ -21,12 +21,14 @@ coverage
 .grunt
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
-build/
-dist/
 
-# API Keys
-api-keys/alphaVantage.js
+# .env
+.env
 
 # Data
 data/
 
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

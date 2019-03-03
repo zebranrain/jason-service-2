@@ -1,6 +1,6 @@
 import React from 'react';
 import App from './components/App.jsx';
-import { Route, Link, BrowserRouter as Router} from 'react-router-dom';
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 const PriceChart = (
   <Router>
@@ -8,6 +8,6 @@ const PriceChart = (
       <Route path="/:ticker" component={App} />
     </div>
   </Router>
-)
+);
 
-window.PriceChart2 = PriceChart;
+window.PriceChart = PriceChart;

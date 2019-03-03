@@ -1,13 +1,11 @@
 # Project Name
 
-> Project description
+> Interactive stock chart, a la Robinhood
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/zebranrain/jason-service-2
+  - https://github.com/zebranrain/tj-service
 
 ## Table of Contents
 

@@ -3,6 +3,8 @@ import Chart from './Chart.jsx';
 import Timeframes from './Timeframes.jsx';
 import Header from './Header.jsx';
 import stockPrices from '../services/stockPrices.js';
+import translateTimeframe from '../utilities/translateTimeframe.js';
+import formatPrices from '../utilities/formatPrices.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,55 +18,44 @@ class App extends React.Component {
     this.getPrices = this.getPrices.bind(this);
   }
 
+  /* Fetches prices from the server and updates state accordingly
+  Invoked on componentDidMount. */
+
   async getPrices(timeframe) {
-    let { ticker } = this.props.match.params;
-    let data = await stockPrices(ticker, timeframe);
-    let pricepoints = this.formatPrices(data.prices);
-    let company = data.name;
+    const { ticker } = this.props.match.params;
+    const data = await stockPrices(ticker, timeframe);
+    const pricepoints = formatPrices(data.prices);
+    const company = data.name;
     this.setState({
       pricepoints,
       company
     });
   }
 
+  /* Click handler that allows the user to change the chart's timeframe.
+  Uses the setState callback to fetch prices for the new timeframe */
+
   changeTimeframe(event) {
-
-    const map = {
-      '1D': 'day',
-      '1W': 'week',
-      '1M': 'month',
-      '3M': 'quarter',
-      '1Y': 'year',
-      '5Y': 'fiveYear'
+    const timeframe = translateTimeframe[event.target.innerText];
+    if (timeframe) {
+      this.setState({ timeframe }, () => {
+        this.getPrices(this.state.timeframe);
+      });
     }
-    this.setState({timeframe: map[event.target.innerText]}, () => {
-      this.getPrices(this.state.timeframe)
-    });
-  }
-
-  formatPrices(pricepoints) {
-    return pricepoints.reverse().map((pricepoint, index) => {
-      let date = new Date(pricepoint.date).getTime();
-      let price = parseFloat(pricepoint.price).toFixed(2);
-      return {
-        x: index,
-        y: price,
-        z: date
-      }
-    })
   }
 
   componentDidMount() {
     this.getPrices(this.state.timeframe);
   }
+
   render() {
     return (
       <div>
-        <Header company={this.state.company}/>
-        <Chart pricepoints={this.state.pricepoints} company={this.state.company} timeframe={this.state.timeframe}/>
-        <Timeframes changeTimeframe={this.changeTimeframe} timeframe={this.state.timeframe}/>
+        <Header company={this.state.company} />
+        <Chart pricepoints={this.state.pricepoints} company={this.state.company} timeframe={this.state.timeframe} />
+        <Timeframes changeTimeframe={this.changeTimeframe} timeframe={this.state.timeframe} />
       </div>
-    )
+    );
   }
 }
 
