@@ -6,5 +6,8 @@
  */
 
 module.exports = {
-  extends: './node_modules/eslint-config-hackreactor/index.js'
+  extends: './node_modules/eslint-config-hackreactor/index.js',
+  // extends: 'prettier',
+  parser: "babel-eslint"
+  // plugins: ['prettier']
 };

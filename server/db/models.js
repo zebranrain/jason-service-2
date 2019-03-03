@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./config.js');
 
+// TODO: enforce unique ticker
+
 const Company = sequelize.define('company', {
   ticker: Sequelize.STRING,
   name: Sequelize.STRING
